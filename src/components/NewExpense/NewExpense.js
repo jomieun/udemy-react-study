@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
-function NewExpense(props) {
+const NewExpense = (props) => {
   const [showForm, setShowForm] = useState(false);
 
   const saveExpenseDataHandler = (enteredExpenseData) => {
@@ -37,6 +37,6 @@ function NewExpense(props) {
   }
 
   return <div className="new-expense">{formContent}</div>;
-}
+};
 
 export default NewExpense;

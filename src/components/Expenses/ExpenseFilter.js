@@ -1,6 +1,6 @@
 import "./ExpenseFilter.css";
 
-function ExpenseFilter(props) {
+const ExpenseFilter = (props) => {
   const filterChangeHandler = (event) => {
     console.log(event.target.value);
     props.onChangeFilter(event.target.value);
@@ -24,6 +24,6 @@ function ExpenseFilter(props) {
       </div>
     </div>
   );
-}
+};
 
 export default ExpenseFilter;

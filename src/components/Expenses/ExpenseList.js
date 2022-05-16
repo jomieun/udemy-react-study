@@ -1,7 +1,7 @@
 import ExpenseItem from "./ExpenseItem";
 import "./ExpenseList.css";
 
-function ExpenseList(props) {
+const ExpenseList = (props) => {
   if (props.item.length === 0)
     return <h1 className="expenses-list__fallback">No expenses found</h1>;
 
@@ -15,6 +15,6 @@ function ExpenseList(props) {
       />
     </ul>
   ));
-}
+};
 
 export default ExpenseList;
