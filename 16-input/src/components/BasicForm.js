@@ -1,6 +1,7 @@
 import useInput from "../hooks/use-input";
 
 const BasicForm = (props) => {
+  const emptyCheck = (value) => value.trim() !== "";
   const {
     value: firstName,
     hasError: firstNameHasError,
@@ -8,7 +9,7 @@ const BasicForm = (props) => {
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameInputBlurHandler,
     reset: firstNameReset,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput(emptyCheck);
 
   const {
     value: lastName,
@@ -17,7 +18,7 @@ const BasicForm = (props) => {
     valueChangeHandler: lastNameChangeHandler,
     inputBlurHandler: lastNameInputBlurHandler,
     reset: lastNameReset,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput(emptyCheck);
 
   const {
     value: email,
@@ -49,7 +50,9 @@ const BasicForm = (props) => {
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
-    if (firstNameHasError || lastNameHasError || emailHasError) return;
+    if (!formIsValid) return;
+
+    console.log("Submitted!");
 
     firstNameReset();
     lastNameReset();
@@ -68,7 +71,9 @@ const BasicForm = (props) => {
             onBlur={firstNameInputBlurHandler}
             onChange={firstNameChangeHandler}
           />
-          {firstNameHasError && <p>First name must not be empty.</p>}
+          {firstNameHasError && (
+            <p className="error-text">First name must not be empty.</p>
+          )}
         </div>
         <div className={lastNameClasses}>
           <label htmlFor="name">Last Name</label>
@@ -79,7 +84,9 @@ const BasicForm = (props) => {
             onBlur={lastNameInputBlurHandler}
             onChange={lastNameChangeHandler}
           />
-          {lastNameHasError && <p>Last name must not be empty.</p>}
+          {lastNameHasError && (
+            <p className="error-text">Last name must not be empty.</p>
+          )}
         </div>
       </div>
       <div className={emailClasses}>
@@ -91,7 +98,9 @@ const BasicForm = (props) => {
           onBlur={emailInputBlurHandler}
           onChange={emailChangeHandler}
         />
-        {emailHasError && <p>Please enter a valid email.</p>}
+        {emailHasError && (
+          <p className="error-text">Please enter a valid email.</p>
+        )}
       </div>
       <div className="form-actions">
         <button disabled={!formIsValid}>Submit</button>
