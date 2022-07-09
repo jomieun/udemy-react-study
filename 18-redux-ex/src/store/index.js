@@ -3,7 +3,7 @@ import { createStore } from "redux";
 const coutnerReducer = (state = { counter: 0 }, action) => {
   if (action.type === "increment") {
     return {
-      counter: state.coutner + 1,
+      counter: state.counter + 1,
     };
   }
 
