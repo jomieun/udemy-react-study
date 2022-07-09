@@ -1,0 +1,21 @@
+import { createStore } from "redux";
+
+const coutnerReducer = (state = { counter: 0 }, action) => {
+  if (action.type === "increment") {
+    return {
+      counter: state.coutner + 1,
+    };
+  }
+
+  if (action.type === "decrement") {
+    return {
+      counter: state.counter - 1,
+    };
+  }
+
+  return state;
+};
+
+const store = createStore(coutnerReducer);
+
+export default store;
