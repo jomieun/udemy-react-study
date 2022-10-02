@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
 
 import ProductItem from "../components/Products/ProductItem";
 import "./Products.css";
